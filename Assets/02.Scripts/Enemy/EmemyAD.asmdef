@@ -1,0 +1,16 @@
+{
+    "name": "EmemyAD",
+    "rootNamespace": "",
+    "references": [
+        "GUID:238f1f67f666e064ead54319b9eea9ee"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
