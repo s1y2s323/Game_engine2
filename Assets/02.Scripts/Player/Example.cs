@@ -23,6 +23,8 @@ public class Example : MonoBehaviour
     [SerializeField]
     private Transform cameraRig;
 
+    
+
     [SerializeField] private Transform character;
     public float moveSpeed = 10.0f;
    
@@ -41,9 +43,10 @@ public class Example : MonoBehaviour
     
     void Update()
     {
+        AnimClip();
         LookAround();
         Move();
-        AnimClip();
+        
     }
 
     private void Move()
@@ -80,7 +83,10 @@ public class Example : MonoBehaviour
                 x = Mathf.Clamp(x, 335f, 361f);
             }
         }
+       
         cameraRig.rotation =UnityEngine.Quaternion.Euler(x, camAngle.y + mouseDelta.x, camAngle.z);
+        
+       // Rarm.rotation = cameraRig.rotation;
     }
 
     private void AnimClip()
