@@ -19,6 +19,8 @@ public class Example : MonoBehaviour
     private float h = 0.0f;
     private float v = 0.0f;
     private Vector2 r = new Vector2(0.0f,0.0f);
+
+    private bool is_move;
     
     [SerializeField]
     private Transform cameraRig;
