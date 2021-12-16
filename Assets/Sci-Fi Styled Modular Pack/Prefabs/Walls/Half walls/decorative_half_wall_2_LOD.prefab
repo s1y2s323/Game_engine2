@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 473426}
   - component: {fileID: 3381778}
   - component: {fileID: 2381876}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: decorative_half_wall_2_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &473426
 Transform:
@@ -92,12 +92,12 @@ GameObject:
   - component: {fileID: 400666}
   - component: {fileID: 3375960}
   - component: {fileID: 2397664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: decorative_half_wall_2_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &400666
 Transform:
@@ -171,14 +171,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 481996}
-  - component: {fileID: 6525876}
   - component: {fileID: 20547668}
-  m_Layer: 0
+  - component: {fileID: 1473875407906876112}
+  - component: {fileID: -5941346456372802266}
+  m_Layer: 9
   m_Name: decorative_half_wall_2_LOD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &481996
 Transform:
@@ -196,19 +197,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6525876
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185634}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 2.2, z: 0.2986662}
-  m_Center: {x: 0, y: 1.1, z: 0.14933296}
 --- !u!205 &20547668
 LODGroup:
   m_ObjectHideFlags: 0
@@ -232,3 +220,31 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2381876}
   m_Enabled: 1
+--- !u!114 &1473875407906876112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306d44123172f4d47ac77237b0446850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sparkEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
+    type: 3}
+--- !u!64 &-5941346456372802266
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}

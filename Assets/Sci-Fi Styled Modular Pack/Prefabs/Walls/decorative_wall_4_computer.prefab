@@ -9,14 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 411016}
-  - component: {fileID: 6521048}
   - component: {fileID: 20522330}
-  m_Layer: 0
+  - component: {fileID: -3180429965552182776}
+  - component: {fileID: 1201988043564235097}
+  m_Layer: 9
   m_Name: decorative_wall_4_computer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &411016
 Transform:
@@ -34,19 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6521048
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169896}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 4, z: 0.47500858}
-  m_Center: {x: 0, y: 2, z: 0.23750414}
 --- !u!205 &20522330
 LODGroup:
   m_ObjectHideFlags: 0
@@ -70,6 +58,34 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2307016}
   m_Enabled: 1
+--- !u!114 &-3180429965552182776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306d44123172f4d47ac77237b0446850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sparkEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
+    type: 3}
+--- !u!64 &1201988043564235097
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &181798
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,12 +97,12 @@ GameObject:
   - component: {fileID: 410588}
   - component: {fileID: 3347874}
   - component: {fileID: 2340390}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: decorative_wall_4_computer_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &410588
 Transform:
@@ -165,12 +181,12 @@ GameObject:
   - component: {fileID: 493140}
   - component: {fileID: 3351982}
   - component: {fileID: 2307016}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: decorative_wall_4_computer_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &493140
 Transform:

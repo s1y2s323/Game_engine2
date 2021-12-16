@@ -32,10 +32,13 @@ public class EnemyAI : MonoBehaviour
     private MoveAgent moveAgent;
     private EnemyFire enemyFire;
 
+    private EnemyFOV enemyFOV;
+
     private readonly int hashMove = Animator.StringToHash("IsMove");
     private readonly int hashSpeed = Animator.StringToHash("Speed");
     private readonly int hashDie = Animator.StringToHash("Die");
     private readonly int hashDieIdx = Animator.StringToHash("DieIdx");
+    private readonly int hashPlayerDie = Animator.StringToHash("PlayerDie");
 
     void Awake()
     {
@@ -47,6 +50,7 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();
         moveAgent = GetComponent<MoveAgent>();
         enemyFire = GetComponent<EnemyFire>();
+        enemyFOV = GetComponent<EnemyFOV>();
 
         ws = new WaitForSeconds(0.3f);
     }
@@ -55,10 +59,18 @@ public class EnemyAI : MonoBehaviour
     {
         StartCoroutine(CheckState());
         StartCoroutine(Action());
+
+        Damage.OnPlayerDie += this.OnPlayerDie;
+    }
+
+    void OnDisable()
+    {
+        Damage.OnPlayerDie -= this.OnPlayerDie;
     }
 
     IEnumerator CheckState()
     {
+        yield return new WaitForSeconds(1.0f);
         while (!isDie)
         {
             if (state == State.DIE)
@@ -67,9 +79,14 @@ public class EnemyAI : MonoBehaviour
 
             if (dist <= attackDist)
             {
-                state = State.ATTACK;
+                if (enemyFOV.isViewPlayer()) 
+                    state = State.ATTACK;
+                else
+                    state = State.TRACE;
+               
+               // state = State.ATTACK;
             }
-            else if (dist <= traceDist)
+            else if (enemyFOV.isTracePlayer())
             {
                 state = State.TRACE;
             }
@@ -107,6 +124,8 @@ public class EnemyAI : MonoBehaviour
                         enemyFire.isFire = true;
                     break;
                 case State.DIE:
+                    this.gameObject.tag = "Untagged";
+                    
                     isDie = true;
                     enemyFire.isFire = false;
                     moveAgent.Stop();
@@ -116,6 +135,16 @@ public class EnemyAI : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void OnPlayerDie()
+    {
+        moveAgent.Stop();
+        enemyFire.isFire = false;
+
+        StopAllCoroutines();
+
+        animator.SetTrigger(hashPlayerDie);
     }
 
     void Update()

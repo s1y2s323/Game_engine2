@@ -13,14 +13,14 @@ public class EnemyBulletCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerTr = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<Transform>();
+       // playerTr = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<Transform>();
 
-        offset = new Vector3(0, 1.5f, 0);
+       // offset = new Vector3(0, 1.5f, 0);
+//
+       // bulletDir = playerTr.position - transform.position + offset;
+       // bulletDir.Normalize();
 
-        bulletDir = playerTr.position - transform.position + offset;
-        bulletDir.Normalize();
-
-        GetComponent<Rigidbody>().AddForce(bulletDir * speed);
+       // GetComponent<Rigidbody>().AddForce(bulletDir * speed);
     }
 
     // Update is called once per frame

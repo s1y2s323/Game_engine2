@@ -56,10 +56,8 @@ public class MoveAgent : MonoBehaviour
 
     public float speed
     {
-        get
-        {
-            return agent.velocity.magnitude;
-        }
+        get{return agent.velocity.magnitude;}
+        
     }
     
     // Start is called before the first frame update
@@ -75,9 +73,13 @@ public class MoveAgent : MonoBehaviour
         {
             group.GetComponentsInChildren<Transform>(wayPoints);
             wayPoints.RemoveAt(0);
+
+            nextIdx = Random.Range(0, wayPoints.Count);
         }
 
-        MoveWayPoint();
+        this.patrolling = true;
+
+      // MoveWayPoint();
     }
 
     void MoveWayPoint()
@@ -117,7 +119,8 @@ public class MoveAgent : MonoBehaviour
             return;
         if (agent.velocity.sqrMagnitude >= 0.2f * 0.2f && agent.remainingDistance <= 0.5)
         {
-            nextIdx = ++nextIdx % wayPoints.Count;
+            //nextIdx = ++nextIdx % wayPoints.Count;
+            nextIdx = Random.Range(0, wayPoints.Count);
             MoveWayPoint();
         }
     }

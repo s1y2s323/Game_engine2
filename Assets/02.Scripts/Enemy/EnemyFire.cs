@@ -32,15 +32,27 @@ public class EnemyFire : MonoBehaviour
     public GameObject Bullet;
 
     public Transform firePos;
+
+    public MeshRenderer muzzleFlash;
+    
+    private Transform spine;
+    
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        
         playerTr = GameObject.FindGameObjectWithTag("PLAYER").GetComponent<Transform>();
         enemyTr = GetComponent<Transform>();
         animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
 
         wsReload = new WaitForSeconds(reloadTime);
+        muzzleFlash.enabled = false;
+        
+        anim = GetComponent<Animator>();
+        if(anim)
+            spine = anim.GetBoneTransform(HumanBodyBones.UpperChest);
     }
 
     // Update is called once per frame
@@ -52,18 +64,24 @@ public class EnemyFire : MonoBehaviour
             {
                 Fire();
                 nextFire = Time.time + fireRate + Random.Range(0.0f, 0.3f);
-
             }
+            Quaternion rot = Quaternion.LookRotation(playerTr.position - enemyTr.position );
+            enemyTr.rotation = Quaternion.Slerp(enemyTr.rotation, rot, Time.deltaTime * damping);
+
+
+           // enemyTr.forward = (playerTr.position - enemyTr.position).normalized;
+           // spine.rotation = spine.rotation * Quaternion.Euler(0, -x,0) ;
+
         }
 
-        Quaternion rot = Quaternion.LookRotation(playerTr.position - enemyTr.position);
-        enemyTr.rotation = Quaternion.Slerp(enemyTr.rotation, rot, Time.deltaTime * damping);
+       
     }
 
     void Fire()
     {
         animator.SetTrigger(hashFire);
         audio.PlayOneShot(fireSfx, 1.0f);
+        StartCoroutine(ShowMuzzleFlash());
 
         GameObject _bullet = Instantiate(Bullet, firePos.position, firePos.rotation);
         Destroy(_bullet, 3.0f);
@@ -75,8 +93,24 @@ public class EnemyFire : MonoBehaviour
         }
     }
 
+    IEnumerator ShowMuzzleFlash()
+    {
+        muzzleFlash.enabled = true;
+
+        Quaternion rot = Quaternion.Euler(Vector3.forward * Random.Range(0, 360));
+        muzzleFlash.transform.localRotation = rot;
+        muzzleFlash.transform.localScale = Vector3.one * Random.Range(1.0f,2.0f);
+
+        Vector2 offset = new Vector2(Random.Range(0, 2), Random.Range(0, 2)) * 0.5f;
+        muzzleFlash.material.SetTextureOffset("_MainTex", offset);
+
+        yield return new WaitForSeconds(Random.Range(0.05f, 0.2f));
+        muzzleFlash.enabled = false;
+    }
+
     IEnumerator Reloading()
     {
+        muzzleFlash.enabled = false;
         animator.SetTrigger(hashReload);
         audio.PlayOneShot(reloadSfx, 1.0f);
 

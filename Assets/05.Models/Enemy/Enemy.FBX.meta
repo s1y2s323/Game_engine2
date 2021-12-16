@@ -220,7 +220,7 @@ ModelImporter:
       name: 01 - Defaultdr
     second: {fileID: 2100000, guid: 68b253fb8304545b28d865df7fe47b18, type: 2}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
